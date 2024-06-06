@@ -80,6 +80,15 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnCargarDatosIniciales);
+		
+		JButton bntEnvioADomicilio = new JButton("Registro de envíos a domicilio");
+		bntEnvioADomicilio.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+			public void actionPerformed(ActionEvent e) {
+				EnviosController controller=new EnviosController(new EnviosModel(), new EnviosView());
+				controller.initController();
+			}
+		});
+		frame.getContentPane().add(btnCargarDatosIniciales);
 	}
 
 	public JFrame getFrame() { return this.frame; }
