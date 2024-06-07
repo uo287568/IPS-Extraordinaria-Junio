@@ -15,11 +15,11 @@ create table Envios (
     nombreReceptor varchar(20), 
     correoReceptor varchar(50),
     direccionReceptor varchar(100),
-    largo int,
-    ancho int,
-    alto int,
-    peso int,
-    precio int,
+    largo decimal(4,2),
+    ancho decimal(4,2),
+    alto decimal(4,2),
+    peso decimal(4,2),
+    precio decimal(4,2),
     instrExtra varchar(100)
 );
 

@@ -10,24 +10,96 @@ package giis.demo.tkrun;
  * Seguir tambien estos mismos criterios en los nombres de tablas y campos de la BD
  */
 public class EnvioEntity {
-	private String id;
-	private String inicio; //las fechas son string (vienen de sqlite)
-	private String fin;
-	private String fecha;
-	private String descr;
+	private String nref;
+	private String nombreEmisor;
+	private String correoEmisor;
+	private String direccionEmisor;
+	private String nombreReceptor;
+	private String correoReceptor;
+	private String direccionReceptor;
+	private Double largo;
+	private Double ancho;
+	private Double alto;
+	private Double peso;
+	private Double precio;
+	private String instrExtra;
 
-	public String getId() { return this.id; }
-	public String getInicio() { return this.inicio; }
-	public String getFin() { return this.fin; }
-	public String getFecha() { return this.fecha; }
-	public String getDescr() { return this.descr; }
-	public void setId(String value) { this.id=value; }
-	public void setInicio(String value) { this.inicio=value; }
-	public void setFin(String value) { this.fin=value; }
-	public void setFecha(String value) { this.fecha=value; }
-	public void setDescr(String value) { this.descr=value; }
-	//NOTA: se pueden generar getters y setters de forma automatica usando lombok:  
-	//https://www.sitepoint.com/declutter-pojos-with-lombok-tutorial/
-	//http://www.baeldung.com/intro-to-project-lombok
-	//En un fichero con este mismo nombre, pero con extension .txt se muestra un ejemplo
+	public String getNref() {
+		return nref;
+	}
+	public String getNombreEmisor() {
+		return nombreEmisor;
+	}
+	public String getCorreoEmisor() {
+		return correoEmisor;
+	}
+	public String getDireccionEmisor() {
+		return direccionEmisor;
+	}
+	public String getNombreReceptor() {
+		return nombreReceptor;
+	}
+	public String getCorreoReceptor() {
+		return correoReceptor;
+	}
+	public String getDireccionReceptor() {
+		return direccionReceptor;
+	}
+	public Double getLargo() {
+		return largo;
+	}
+	public Double getAncho() {
+		return ancho;
+	}
+	public Double getAlto() {
+		return alto;
+	}
+	public Double getPeso() {
+		return peso;
+	}
+	public Double getPrecio() {
+		return precio;
+	}
+	public String getInstrExtra() {
+		return instrExtra;
+	}
+	public void setNref(String nref) {
+		this.nref = nref;
+	}
+	public void setNombreEmisor(String nombreEmisor) {
+		this.nombreEmisor = nombreEmisor;
+	}
+	public void setCorreoEmisor(String correoEmisor) {
+		this.correoEmisor = correoEmisor;
+	}
+	public void setDireccionEmisor(String direccionEmisor) {
+		this.direccionEmisor = direccionEmisor;
+	}
+	public void setNombreReceptor(String nombreReceptor) {
+		this.nombreReceptor = nombreReceptor;
+	}
+	public void setCorreoReceptor(String correoReceptor) {
+		this.correoReceptor = correoReceptor;
+	}
+	public void setDireccionReceptor(String direccionReceptor) {
+		this.direccionReceptor = direccionReceptor;
+	}
+	public void setLargo(Double largo) {
+		this.largo = largo;
+	}
+	public void setAncho(Double ancho) {
+		this.ancho = ancho;
+	}
+	public void setAlto(Double alto) {
+		this.alto = alto;
+	}
+	public void setPeso(Double peso) {
+		this.peso = peso;
+	}
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
+	public void setInstrExtra(String instrExtra) {
+		this.instrExtra = instrExtra;
+	}
 }
