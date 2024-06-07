@@ -3,16 +3,15 @@ package giis.demo.tkrun;
 import javax.swing.JFrame;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 
-import java.awt.Dimension;
-import java.awt.SystemColor;
-import javax.swing.UIManager;
+import javax.swing.JPanel;
+import java.awt.Font;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.JTextArea;
+import java.awt.Color;
 
 /**
  * Vista de la pantalla que muestra las carreras activas y permite interactuar con ellas.
@@ -26,12 +25,17 @@ import javax.swing.UIManager;
 public class EnviosView {
 
 	private JFrame frame;
-	private JTextField txtFechaHoy;
-	private JButton btnTabCarreras;
-	private JTable tabCarreras;
-	private JComboBox<Object> lstCarreras;
-	private JLabel descuento;
-	private JTable tabDetalle;
+	private JTextField tfNombreE;
+	private JTextField tfCorreoE;
+	private JTextField textField;
+	private JTextField tfNombreR;
+	private JTextField tfCorreoR;
+	private JTextField tfDireccionR;
+	private JTextField tfLargo;
+	private JTextField tfAncho;
+	private JTextField tfAlto;
+	private JTextField tfPeso;
+	private JTextField tfPrecio;
 
 	/**
 	 * Create the application.
@@ -47,77 +51,148 @@ public class EnviosView {
 		frame = new JFrame();
 		frame.setTitle("Carreras");
 		frame.setName("Carreras");
-		frame.setBounds(0, 0, 492, 422);
+		frame.setBounds(0, 0, 595, 422);
 		frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[grow]", "[][][grow][][][][][][][][]"));
+		frame.getContentPane().setLayout(new MigLayout("", "[grow]", "[][][][][][][][][grow][][][]"));
 		
-		final JLabel lblSimulacion;
-		final JLabel lblFechaHoy;
-		final JLabel lblLstCarreras;
-
-		lblSimulacion = new JLabel("Simulación de la fecha de hoy para mostrar las carreras");
-		frame.getContentPane().add(lblSimulacion, "cell 0 1");
+		final JLabel lbInfoE;
 		
-		lblFechaHoy = new JLabel("Fecha de hoy (formato ISO):");
-		frame.getContentPane().add(lblFechaHoy, "flowx,cell 0 3");
+		JLabel lbTítulo = new JLabel("Registro de envíos a domicilio:");
+		lbTítulo.setFont(new Font("Tahoma", Font.BOLD, 15));
+		frame.getContentPane().add(lbTítulo, "cell 0 0");
 		
-		txtFechaHoy = new JTextField();
-		txtFechaHoy.setName("txtFechaHoy");
-		frame.getContentPane().add(txtFechaHoy, "cell 0 3,growx");
-		txtFechaHoy.setColumns(10);
+				lbInfoE = new JLabel("Información del emisor del paquete:");
+				lbInfoE.setFont(new Font("Tahoma", Font.PLAIN, 13));
+				frame.getContentPane().add(lbInfoE, "cell 0 1");
 		
-		btnTabCarreras = new JButton("Ver carreras en esta tabla");
-		lblFechaHoy.setLabelFor(btnTabCarreras);
-		frame.getContentPane().add(btnTabCarreras, "cell 0 3");
+		JPanel pnEmisor = new JPanel();
+		frame.getContentPane().add(pnEmisor, "cell 0 2,grow");
 		
-		JLabel lblLbltable = new JLabel("Proximas carreras:");
-		frame.getContentPane().add(lblLbltable, "cell 0 4");
+		JLabel lbNombreE = new JLabel("Nombre:");
+		pnEmisor.add(lbNombreE);
 		
-		//Incluyo la tabla en un JScrollPane y anyado este en vez de la tabla para poder ver los headers de la tabla
-		tabCarreras = new JTable();
-		tabCarreras.setName("tabCarreras");
-		tabCarreras.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tabCarreras.setDefaultEditor(Object.class, null); //readonly
-		JScrollPane tablePanel = new JScrollPane(tabCarreras);
-		frame.getContentPane().add(tablePanel, "cell 0 5,grow");
+		tfNombreE = new JTextField();
+		pnEmisor.add(tfNombreE);
+		tfNombreE.setColumns(10);
 		
-		lblLstCarreras = new JLabel("La misma informacion que en la tabla, pero en forma de lista/combo");
-		frame.getContentPane().add(lblLstCarreras, "cell 0 6");
+		JLabel lbCorreoE = new JLabel("Correo:");
+		pnEmisor.add(lbCorreoE);
 		
-		lstCarreras = new JComboBox<>();
-		frame.getContentPane().add(lstCarreras, "cell 0 7,growx");
+		tfCorreoE = new JTextField();
+		pnEmisor.add(tfCorreoE);
+		tfCorreoE.setColumns(10);
 		
-		JLabel lblAlSeleccionarLa = new JLabel("Al seleccionar la tabla (no el combo) muestra detalles");
-		frame.getContentPane().add(lblAlSeleccionarLa, "cell 0 8");
+		JLabel lbDireccionE = new JLabel("Dirección de recogida:");
+		pnEmisor.add(lbDireccionE);
 		
-		JLabel lblPorcentajeDescuento = new JLabel("Porcentaje de descuento: ");
-		frame.getContentPane().add(lblPorcentajeDescuento, "flowx,cell 0 9");
+		textField = new JTextField();
+		pnEmisor.add(textField);
+		textField.setColumns(10);
 		
-		descuento = new JLabel("##");
-		descuento.setName("descuento");
-		descuento.setFont(UIManager.getFont("TextField.font"));
-		frame.getContentPane().add(descuento, "cell 0 9");
-
-		tabDetalle = new JTable();
-		tabDetalle.setName("tabDetalle");
-		tabDetalle.setRowSelectionAllowed(false);
-		tabDetalle.setDefaultEditor(Object.class, null); //readonly
-		tabDetalle.setBackground(SystemColor.control);
-		JScrollPane tableDetallePanel = new JScrollPane(tabDetalle);
-		tableDetallePanel.setMinimumSize(new Dimension(200,95));
-		tableDetallePanel.setPreferredSize(new Dimension(300,95));
-		frame.getContentPane().add(tableDetallePanel, "cell 0 10");
+		JLabel lbInfoR = new JLabel("Información del receptor del paquete:");
+		lbInfoR.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		frame.getContentPane().add(lbInfoR, "cell 0 3");
+		
+		JPanel pnReceptor = new JPanel();
+		frame.getContentPane().add(pnReceptor, "cell 0 4,grow");
+		
+		JLabel lbNombreR = new JLabel("Nombre:");
+		pnReceptor.add(lbNombreR);
+		
+		tfNombreR = new JTextField();
+		tfNombreR.setColumns(10);
+		pnReceptor.add(tfNombreR);
+		
+		JLabel lbCorreoR = new JLabel("Correo:");
+		pnReceptor.add(lbCorreoR);
+		
+		tfCorreoR = new JTextField();
+		tfCorreoR.setColumns(10);
+		pnReceptor.add(tfCorreoR);
+		
+		JLabel lbDireccionR = new JLabel("Dirección de recogida:");
+		pnReceptor.add(lbDireccionR);
+		
+		tfDireccionR = new JTextField();
+		tfDireccionR.setColumns(10);
+		pnReceptor.add(tfDireccionR);
+		
+		JLabel lbPaquete = new JLabel("Información sobre el paquete: (cm y kg)");
+		lbPaquete.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		frame.getContentPane().add(lbPaquete, "cell 0 5");
+		
+		JPanel pnPaquete = new JPanel();
+		frame.getContentPane().add(pnPaquete, "cell 0 6,grow");
+		
+		JLabel lbLargo = new JLabel("Largo:");
+		pnPaquete.add(lbLargo);
+		
+		tfLargo = new JTextField();
+		pnPaquete.add(tfLargo);
+		tfLargo.setColumns(10);
+		
+		JLabel lbAncho = new JLabel("Ancho:");
+		pnPaquete.add(lbAncho);
+		
+		tfAncho = new JTextField();
+		pnPaquete.add(tfAncho);
+		tfAncho.setColumns(10);
+		
+		JLabel lbAlto = new JLabel("Alto:");
+		pnPaquete.add(lbAlto);
+		
+		tfAlto = new JTextField();
+		pnPaquete.add(tfAlto);
+		tfAlto.setColumns(10);
+		
+		JLabel lbPeso = new JLabel("Peso:");
+		pnPaquete.add(lbPeso);
+		
+		tfPeso = new JTextField();
+		pnPaquete.add(tfPeso);
+		tfPeso.setColumns(10);
+		
+		JLabel lbInstrucciones = new JLabel("Instrucciones extra para la recogida o envío del pedido:");
+		lbInstrucciones.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		frame.getContentPane().add(lbInstrucciones, "cell 0 7");
+		
+		JTextArea textArea = new JTextArea();
+		frame.getContentPane().add(textArea, "cell 0 8,grow");
+		
+		JLabel lbPrecio = new JLabel("Precio final en euros (€):");
+		lbPrecio.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		frame.getContentPane().add(lbPrecio, "cell 0 9");
+		
+		JPanel pnPrecio = new JPanel();
+		frame.getContentPane().add(pnPrecio, "cell 0 10,grow");
+		pnPrecio.setLayout(new GridLayout(0, 5, 0, 0));
+		
+		tfPrecio = new JTextField();
+		pnPrecio.add(tfPrecio);
+		tfPrecio.setColumns(10);
+		
+		JPanel panel = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
+		flowLayout.setAlignment(FlowLayout.RIGHT);
+		frame.getContentPane().add(panel, "cell 0 11,grow");
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBackground(Color.RED);
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		panel.add(btnCancelar);
+		
+		JButton btLimpiar = new JButton("Limpiar");
+		btLimpiar.setBackground(Color.LIGHT_GRAY);
+		btLimpiar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		panel.add(btLimpiar);
+		
+		JButton btRegistro = new JButton("Registrar envío");
+		btRegistro.setBackground(Color.GREEN);
+		btRegistro.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		panel.add(btRegistro);
 	}
 
 	//Getters y Setters anyadidos para acceso desde el controlador (repersentacion compacta)
 	public JFrame getFrame() { return this.frame; }
-	public String getFechaHoy()  { return this.txtFechaHoy.getText(); }
-	public void setFechaHoy(String fechaIso)  { this.txtFechaHoy.setText(fechaIso); }
-	public JButton getBtnTablaCarreras() { return this.btnTabCarreras; }
-	public JTable getTablaCarreras() { return this.tabCarreras; }
-	public JComboBox<Object> getListaCarreras() { return this.lstCarreras; }
-	public void setDescuento(String descuento) { this.descuento.setText(descuento+"%"); }
-	public void setDescuentoNoAplicable() { this.descuento.setText("N/A"); }
-	public JTable getDetalleCarrera() { return this.tabDetalle; }
 	
 }
