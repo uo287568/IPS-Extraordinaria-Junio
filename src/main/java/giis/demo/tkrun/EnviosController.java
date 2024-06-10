@@ -1,15 +1,9 @@
 package giis.demo.tkrun;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.List;
-import javax.swing.ComboBoxModel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
+import java.util.Random;
 
-import giis.demo.util.ApplicationException;
+import javax.swing.JOptionPane;
 import giis.demo.util.SwingUtil;
-import giis.demo.util.Util;
 
 /**
  * Controlador para la funcionalidad de visualizacion de carreras para la inscripcion.
@@ -29,10 +23,26 @@ public class EnviosController {
 	}
 
 	public void initController() {
-
+		view.getBtCancelar().addActionListener(e -> SwingUtil.exceptionWrapper(() -> salir()));
+		view.getBtRegistrar().addActionListener(e -> realizarPedido());
 	}
 	
+	private void realizarPedido() {
+		Random rd = new Random();
+		int nref = rd.nextInt(999999999);
+		model.crearPedido(nref, view.getTfNombreE().getText(), view.getTfCorreoE().getText(), view.getTfDireccionE().getText(), 
+				view.getTfNombreR().getText(), view.getTfCorreoR().getText(), view.getTfDireccionR().getText(), view.getTfLargo().getText(), 
+				view.getTfAncho().getText(), view.getTfAlto().getText(), view.getTfPeso().getText(), view.getTfPrecio().getText(), view.getTxaComentarios().getText());
+		view.reset();
+	}
+
 	public void initView() {
 		view.getFrame().setVisible(true); 
+	}
+	
+	private void salir() {
+		int eleccion=JOptionPane.showConfirmDialog(null, "¿Está segur@ de cancelar la creación del envío?");
+		if(eleccion==JOptionPane.YES_OPTION)
+			view.reset();
 	}
 }

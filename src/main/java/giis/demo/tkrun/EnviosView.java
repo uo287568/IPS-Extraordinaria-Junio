@@ -25,9 +25,23 @@ import java.awt.Color;
 public class EnviosView {
 
 	private JFrame frmRegistroenvos;
+	private JLabel lbInfoE;
+	private JLabel lbTítulo;
 	private JTextField tfNombreE;
+	private JPanel pnEmisor;
+	private JLabel lbNombreE;
+	private JLabel lbCorreoE;
+	private JLabel lbDireccionE;
+	private JLabel lbInfoR;
+	private JPanel pnReceptor;
+	private JLabel lbNombreR;
+	private JLabel lbCorreoR;
+	private JLabel lbDireccionR;
+	private JLabel lbPaquete;
+	private JPanel pnPaquete;
+	private JTextArea txaComentarios;
 	private JTextField tfCorreoE;
-	private JTextField textField;
+	private JTextField tfDireccionE;
 	private JTextField tfNombreR;
 	private JTextField tfCorreoR;
 	private JTextField tfDireccionR;
@@ -36,6 +50,8 @@ public class EnviosView {
 	private JTextField tfAlto;
 	private JTextField tfPeso;
 	private JTextField tfPrecio;
+	private JButton btnCancelar;
+	private JButton btRegistro;
 
 	/**
 	 * Create the application.
@@ -55,73 +71,71 @@ public class EnviosView {
 		frmRegistroenvos.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		frmRegistroenvos.getContentPane().setLayout(new MigLayout("", "[grow]", "[][][][][][][][][grow][][][]"));
 		
-		final JLabel lbInfoE;
-		
-		JLabel lbTítulo = new JLabel("Registro de envíos a domicilio:");
+		lbTítulo = new JLabel("Registro de envíos a domicilio:");
 		lbTítulo.setFont(new Font("Tahoma", Font.BOLD, 15));
 		frmRegistroenvos.getContentPane().add(lbTítulo, "cell 0 0");
 		
-				lbInfoE = new JLabel("Información del emisor del paquete:");
-				lbInfoE.setFont(new Font("Tahoma", Font.PLAIN, 13));
-				frmRegistroenvos.getContentPane().add(lbInfoE, "cell 0 1");
+		lbInfoE = new JLabel("Información del emisor del paquete:");
+		lbInfoE.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		frmRegistroenvos.getContentPane().add(lbInfoE, "cell 0 1");
 		
-		JPanel pnEmisor = new JPanel();
+		pnEmisor = new JPanel();
 		frmRegistroenvos.getContentPane().add(pnEmisor, "cell 0 2,grow");
 		
-		JLabel lbNombreE = new JLabel("Nombre:");
+		lbNombreE = new JLabel("Nombre:");
 		pnEmisor.add(lbNombreE);
 		
 		tfNombreE = new JTextField();
 		pnEmisor.add(tfNombreE);
 		tfNombreE.setColumns(10);
 		
-		JLabel lbCorreoE = new JLabel("Correo:");
+		lbCorreoE = new JLabel("Correo:");
 		pnEmisor.add(lbCorreoE);
 		
 		tfCorreoE = new JTextField();
 		pnEmisor.add(tfCorreoE);
 		tfCorreoE.setColumns(10);
 		
-		JLabel lbDireccionE = new JLabel("Dirección de recogida:");
+		lbDireccionE = new JLabel("Dirección de recogida:");
 		pnEmisor.add(lbDireccionE);
 		
-		textField = new JTextField();
-		pnEmisor.add(textField);
-		textField.setColumns(10);
+		tfDireccionE = new JTextField();
+		pnEmisor.add(tfDireccionE);
+		tfDireccionE.setColumns(10);
 		
-		JLabel lbInfoR = new JLabel("Información del receptor del paquete:");
+		lbInfoR = new JLabel("Información del receptor del paquete:");
 		lbInfoR.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		frmRegistroenvos.getContentPane().add(lbInfoR, "cell 0 3");
 		
-		JPanel pnReceptor = new JPanel();
+		pnReceptor = new JPanel();
 		frmRegistroenvos.getContentPane().add(pnReceptor, "cell 0 4,grow");
 		
-		JLabel lbNombreR = new JLabel("Nombre:");
+		lbNombreR = new JLabel("Nombre:");
 		pnReceptor.add(lbNombreR);
 		
 		tfNombreR = new JTextField();
 		tfNombreR.setColumns(10);
 		pnReceptor.add(tfNombreR);
 		
-		JLabel lbCorreoR = new JLabel("Correo:");
+		lbCorreoR = new JLabel("Correo:");
 		pnReceptor.add(lbCorreoR);
 		
 		tfCorreoR = new JTextField();
 		tfCorreoR.setColumns(10);
 		pnReceptor.add(tfCorreoR);
 		
-		JLabel lbDireccionR = new JLabel("Dirección de recogida:");
+		lbDireccionR = new JLabel("Dirección de recogida:");
 		pnReceptor.add(lbDireccionR);
 		
 		tfDireccionR = new JTextField();
 		tfDireccionR.setColumns(10);
 		pnReceptor.add(tfDireccionR);
 		
-		JLabel lbPaquete = new JLabel("Información sobre el paquete: (cm y kg)");
+		lbPaquete = new JLabel("Información sobre el paquete: (cm y kg)");
 		lbPaquete.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		frmRegistroenvos.getContentPane().add(lbPaquete, "cell 0 5");
 		
-		JPanel pnPaquete = new JPanel();
+		pnPaquete = new JPanel();
 		frmRegistroenvos.getContentPane().add(pnPaquete, "cell 0 6,grow");
 		
 		JLabel lbLargo = new JLabel("Largo:");
@@ -156,8 +170,8 @@ public class EnviosView {
 		lbInstrucciones.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		frmRegistroenvos.getContentPane().add(lbInstrucciones, "cell 0 7");
 		
-		JTextArea textArea = new JTextArea();
-		frmRegistroenvos.getContentPane().add(textArea, "cell 0 8,grow");
+		txaComentarios = new JTextArea();
+		frmRegistroenvos.getContentPane().add(txaComentarios, "cell 0 8,grow");
 		
 		JLabel lbPrecio = new JLabel("Precio final en euros (€):");
 		lbPrecio.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -168,6 +182,7 @@ public class EnviosView {
 		pnPrecio.setLayout(new GridLayout(0, 5, 0, 0));
 		
 		tfPrecio = new JTextField();
+		tfPrecio.setEditable(false);
 		tfPrecio.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		pnPrecio.add(tfPrecio);
 		tfPrecio.setColumns(10);
@@ -177,24 +192,48 @@ public class EnviosView {
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		frmRegistroenvos.getContentPane().add(panel, "cell 0 11,grow");
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setForeground(Color.WHITE);
 		btnCancelar.setBackground(Color.RED);
 		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 12));
 		panel.add(btnCancelar);
 		
-		JButton btLimpiar = new JButton("Limpiar");
-		btLimpiar.setBackground(Color.LIGHT_GRAY);
-		btLimpiar.setFont(new Font("Tahoma", Font.BOLD, 12));
-		panel.add(btLimpiar);
-		
-		JButton btRegistro = new JButton("Registrar envío");
+		btRegistro = new JButton("Registrar envío");
 		btRegistro.setBackground(Color.GREEN);
 		btRegistro.setFont(new Font("Tahoma", Font.BOLD, 12));
 		panel.add(btRegistro);
 	}
+	
+	public void reset() {
+		this.tfNombreE.setText("");
+		this.tfCorreoE.setText("");
+		this.tfDireccionE.setText("");
+		this.tfNombreR.setText("");
+		this.tfCorreoR.setText("");
+		this.tfDireccionR.setText("");
+		this.tfLargo.setText("");
+		this.tfAncho.setText("");
+		this.tfAlto.setText("");
+		this.tfPeso.setText("");
+		this.txaComentarios.setText("");
+		this.getFrame().setVisible(false);
+		
+	}
 
 	//Getters y Setters anyadidos para acceso desde el controlador (repersentacion compacta)
 	public JFrame getFrame() { return this.frmRegistroenvos; }
-	
+	public JButton getBtCancelar() { return this.btnCancelar;	}
+	public JButton getBtRegistrar() { return this.btRegistro;	}
+	public JTextField getTfNombreE() { return tfNombreE; }
+	public JTextArea getTxaComentarios() { return txaComentarios; }
+	public JTextField getTfCorreoE() { return tfCorreoE; }
+	public JTextField getTfDireccionE() { return tfDireccionE; }
+	public JTextField getTfNombreR() { return tfNombreR; }
+	public JTextField getTfCorreoR() { return tfCorreoR; }
+	public JTextField getTfDireccionR() { return tfDireccionR; }
+	public JTextField getTfLargo() { return tfLargo; }
+	public JTextField getTfAncho() { return tfAncho; }
+	public JTextField getTfAlto() { return tfAlto; }
+	public JTextField getTfPeso() { return tfPeso; }
+	public JTextField getTfPrecio() { return tfPrecio; }	
 }
