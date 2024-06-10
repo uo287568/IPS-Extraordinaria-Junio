@@ -3,6 +3,7 @@ package giis.demo.tkrun;
 import javax.swing.JFrame;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -235,5 +236,27 @@ public class EnviosView {
 	public JTextField getTfAncho() { return tfAncho; }
 	public JTextField getTfAlto() { return tfAlto; }
 	public JTextField getTfPeso() { return tfPeso; }
-	public JTextField getTfPrecio() { return tfPrecio; }	
+	public JTextField getTfPrecio() { return tfPrecio; }
+
+	public boolean comprobarCampos() {
+		if(this.tfNombreE.getText().isBlank() || this.tfCorreoE.getText().isBlank() || this.tfDireccionE.getText().isBlank() 
+				|| this.tfNombreR.getText().isBlank() || this.tfCorreoR.getText().isBlank() || this.tfDireccionR.getText().isBlank()) {
+			JOptionPane.showMessageDialog(null, "Tienes que rellenar todos los campos para continuar");
+			return false;
+		} else {
+			try {
+				if(this.tfLargo.getText().isBlank() || Double.parseDouble(this.tfLargo.getText()) <= 0 
+					|| this.tfAncho.getText().isBlank() || Double.parseDouble(this.tfAncho.getText()) <= 0
+					|| this.tfAlto.getText().isBlank() || Double.parseDouble(this.tfAlto.getText()) <= 0
+					|| this.tfPeso.getText().isBlank() || Double.parseDouble(this.tfPeso.getText()) <= 0) {
+					JOptionPane.showMessageDialog(null, "Las dimensiones son inválidas");
+					return false;
+				}
+			} catch (NumberFormatException e) {
+				JOptionPane.showMessageDialog(null, "Las dimensiones son inválidas");
+				return false;
+			}
+		}
+		return true;
+	}	
 }

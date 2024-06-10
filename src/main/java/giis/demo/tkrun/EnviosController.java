@@ -28,12 +28,15 @@ public class EnviosController {
 	}
 	
 	private void realizarPedido() {
-		Random rd = new Random();
-		int nref = rd.nextInt(999999999);
-		model.crearPedido(nref, view.getTfNombreE().getText(), view.getTfCorreoE().getText(), view.getTfDireccionE().getText(), 
-				view.getTfNombreR().getText(), view.getTfCorreoR().getText(), view.getTfDireccionR().getText(), view.getTfLargo().getText(), 
-				view.getTfAncho().getText(), view.getTfAlto().getText(), view.getTfPeso().getText(), view.getTfPrecio().getText(), view.getTxaComentarios().getText());
-		view.reset();
+		if (view.comprobarCampos()) {
+			Random rd = new Random();
+			int nref = rd.nextInt(999999999);
+			model.crearPedido(nref, view.getTfNombreE().getText(), view.getTfCorreoE().getText(), view.getTfDireccionE().getText(), 
+					view.getTfNombreR().getText(), view.getTfCorreoR().getText(), view.getTfDireccionR().getText(), view.getTfLargo().getText(), 
+					view.getTfAncho().getText(), view.getTfAlto().getText(), view.getTfPeso().getText(), view.getTfPrecio().getText(), view.getTxaComentarios().getText());
+			JOptionPane.showMessageDialog(null, "REGISTRO DE PEDIDO REALIZADO CORRECTAMENTE. \nNÚMERO DE REFERENCIA DEL PEDIDO: " + nref);
+			view.reset();
+		}
 	}
 
 	public void initView() {

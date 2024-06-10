@@ -28,19 +28,21 @@ create table Transportistas (
 );
 
 create table PedidosTransportista (
-    id int primary key not null
-    nref int primary key not null, 
+    id int not null,
+    nref int not null, 
     direccionEmisor varchar(100),
     nombreReceptor varchar(20), 
     correoReceptor varchar(50),
     direccionReceptor varchar(100),
-    fechaEntrega date not null
+    fechaEntrega date not null,
+    PRIMARY KEY (id, nref)
 );
 
 create table Movimientos (
-    id int primary key not null
-    nref int primary key not null, 
+    id int not null,
+    nref int not null, 
     movimiento varchar(20),
     ubicacion varchar(100),
-    fechaMov date not null
+    fechaMov date not null,
+    PRIMARY KEY (id, nref)
 );
