@@ -1,10 +1,7 @@
 --Datos para carga inicial de la base de datos
 
---Para giis.demo.tkrun:
-delete from carreras;
-insert into carreras(id,inicio,fin,fecha,descr) values 
-	(100,'2016-10-05','2016-10-25','2016-11-09','finalizada'),
-	(101,'2016-10-05','2016-10-25','2016-11-10','en fase 3'),
-	(102,'2016-11-05','2016-11-09','2016-11-20','en fase 2'),
-	(103,'2016-11-10','2016-11-15','2016-11-21','en fase 1'),
-	(104,'2016-11-11','2016-11-15','2016-11-22','antes inscripcion');
+delete from envios;
+
+insert into envios(nref,nombreEmisor,correoEmisor,direccionEmisor,nombreReceptor, correoReceptor, direccionReceptor, largo, ancho, alto, peso, precio, instrExtra) values 
+	(1, "Juan", "juan@gmail.com", "Calle Uría 53, 4B", "Marisa", "marisa@gmail.com", "Calle Julián Clavería 13, 2C", 7.6, 2.3, 8.9, 4.75, 9.45, ""),
+	(2, "Lucía", "lucia@gmail.com", "Calle Alejandro Casona 21, 3A", "Nora", "nora@gmail.com", "Avenida Buenavista 4, 1B", 11.7, 5.1, 7.4, 7.8, 11.35, "Si nadie contesta en el destino, dejar el paquete al portero Miguel");
