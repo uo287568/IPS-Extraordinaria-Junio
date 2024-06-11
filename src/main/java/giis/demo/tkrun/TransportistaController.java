@@ -5,13 +5,13 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 import giis.demo.util.SwingUtil;
 
-public class EnviosController {
-	private EnviosModel model;
-	private EnviosView view;
+public class TransportistaController {
+	private TransportistaModel model;
+	private TransportistaView view;
 
-	public EnviosController(EnviosModel m, EnviosView v) {
-		this.model = m;
-		this.view = v;
+	public TransportistaController(TransportistaModel transportistaModel, TransportistaView transportistaView) {
+		this.model = transportistaModel;
+		this.view = transportistaView;
 		//no hay inicializacion especifica del modelo, solo de la vista
 		this.initView();
 	}

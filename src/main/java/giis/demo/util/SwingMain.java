@@ -79,6 +79,15 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(bntEnvioADomicilio);
+		
+		JButton btnEnviosTransportista = new JButton("Lista de envíos del transportista");
+		btnEnviosTransportista.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+			public void actionPerformed(ActionEvent e) {
+				TransportistaController controller=new TransportistaController(new TransportistaModel(), new TransportistaView());
+				controller.initController();
+			}
+		});
+		frame.getContentPane().add(btnEnviosTransportista);
 	}
 
 	public JFrame getFrame() { return this.frame; }
