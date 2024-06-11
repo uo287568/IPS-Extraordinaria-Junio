@@ -25,8 +25,21 @@ public class EnviosController {
 	public void initController() {
 		view.getBtCancelar().addActionListener(e -> SwingUtil.exceptionWrapper(() -> salir()));
 		view.getBtRegistrar().addActionListener(e -> realizarPedido());
+		view.getBtPrecio().addActionListener(e -> calcularPrecio());
 	}
 	
+	private void calcularPrecio() {
+		if(view.comprobarDimensiones()) {
+			double largo = Double.parseDouble(view.getTfLargo().getText());
+			double ancho = Double.parseDouble(view.getTfAncho().getText());
+			double alto = Double.parseDouble(view.getTfAlto().getText());
+			double peso = Double.parseDouble(view.getTfPeso().getText());
+			double precioFinal = 25 + peso*2 + ((largo*ancho*alto) / 10000);
+			double resultado = (double) Math.round(precioFinal * 100) / 100;
+			view.getTfPrecio().setText(String.valueOf(resultado));
+		}
+	}
+
 	private void realizarPedido() {
 		if (view.comprobarCampos()) {
 			Random rd = new Random();
