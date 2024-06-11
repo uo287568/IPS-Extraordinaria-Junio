@@ -1,6 +1,5 @@
 package giis.demo.tkrun;
 
-import java.text.DecimalFormat;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
@@ -36,9 +35,8 @@ public class EnviosController {
 			double alto = Double.parseDouble(view.getTfAlto().getText());
 			double peso = Double.parseDouble(view.getTfPeso().getText());
 			double precioFinal = 25 + peso*2 + ((largo*ancho*alto) / 10000);
-			DecimalFormat df = new DecimalFormat("#.00");
-			String resultado = df.format(precioFinal);
-			view.getTfPrecio().setText(resultado);
+			double resultado = (double) Math.round(precioFinal * 100) / 100;
+			view.getTfPrecio().setText(String.valueOf(resultado));
 		}
 	}
 
