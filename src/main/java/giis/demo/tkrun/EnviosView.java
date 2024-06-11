@@ -53,6 +53,7 @@ public class EnviosView {
 	private JTextField tfPrecio;
 	private JButton btnCancelar;
 	private JButton btRegistro;
+	private JButton btPrecio;
 
 	/**
 	 * Create the application.
@@ -182,6 +183,10 @@ public class EnviosView {
 		frmRegistroenvos.getContentPane().add(pnPrecio, "cell 0 10,grow");
 		pnPrecio.setLayout(new GridLayout(0, 5, 0, 0));
 		
+		btPrecio = new JButton("Calcular precio: ");
+		btPrecio.setFont(new Font("Tahoma", Font.BOLD, 12));
+		pnPrecio.add(btPrecio);
+		
 		tfPrecio = new JTextField();
 		tfPrecio.setEditable(false);
 		tfPrecio.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -225,6 +230,7 @@ public class EnviosView {
 	public JFrame getFrame() { return this.frmRegistroenvos; }
 	public JButton getBtCancelar() { return this.btnCancelar;	}
 	public JButton getBtRegistrar() { return this.btRegistro;	}
+	public JButton getBtPrecio() { return this.btPrecio;	}
 	public JTextField getTfNombreE() { return tfNombreE; }
 	public JTextArea getTxaComentarios() { return txaComentarios; }
 	public JTextField getTfCorreoE() { return tfCorreoE; }
@@ -243,20 +249,35 @@ public class EnviosView {
 				|| this.tfNombreR.getText().isBlank() || this.tfCorreoR.getText().isBlank() || this.tfDireccionR.getText().isBlank()) {
 			JOptionPane.showMessageDialog(null, "Tienes que rellenar todos los campos para continuar");
 			return false;
-		} else {
-			try {
-				if(this.tfLargo.getText().isBlank() || Double.parseDouble(this.tfLargo.getText()) <= 0 
-					|| this.tfAncho.getText().isBlank() || Double.parseDouble(this.tfAncho.getText()) <= 0
-					|| this.tfAlto.getText().isBlank() || Double.parseDouble(this.tfAlto.getText()) <= 0
-					|| this.tfPeso.getText().isBlank() || Double.parseDouble(this.tfPeso.getText()) <= 0) {
-					JOptionPane.showMessageDialog(null, "Las dimensiones son inválidas");
+		} else if(!comprobarPrecio()){
+			return false;
+		} else return comprobarDimensiones();
+	}
+
+	private boolean comprobarPrecio() {
+		try {
+			if(this.tfPrecio.getText().isBlank() || Double.parseDouble(this.tfPrecio.getText()) <= 0) {
+					JOptionPane.showMessageDialog(null, "Precio inválido");
 					return false;
-				}
-			} catch (NumberFormatException e) {
+				} else return true;
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Precio no calculado");
+			return false;
+		}
+	}
+
+	public boolean comprobarDimensiones() {
+		try {
+			if(this.tfLargo.getText().isBlank() || Double.parseDouble(this.tfLargo.getText()) <= 0 
+				|| this.tfAncho.getText().isBlank() || Double.parseDouble(this.tfAncho.getText()) <= 0
+				|| this.tfAlto.getText().isBlank() || Double.parseDouble(this.tfAlto.getText()) <= 0
+				|| this.tfPeso.getText().isBlank() || Double.parseDouble(this.tfPeso.getText()) <= 0) {
 				JOptionPane.showMessageDialog(null, "Las dimensiones son inválidas");
 				return false;
-			}
+			} else return true;
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Las dimensiones son inválidas");
+			return false;
 		}
-		return true;
 	}	
 }

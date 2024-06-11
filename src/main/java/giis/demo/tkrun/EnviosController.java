@@ -1,5 +1,6 @@
 package giis.demo.tkrun;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
@@ -25,8 +26,22 @@ public class EnviosController {
 	public void initController() {
 		view.getBtCancelar().addActionListener(e -> SwingUtil.exceptionWrapper(() -> salir()));
 		view.getBtRegistrar().addActionListener(e -> realizarPedido());
+		view.getBtPrecio().addActionListener(e -> calcularPrecio());
 	}
 	
+	private void calcularPrecio() {
+		if(view.comprobarDimensiones()) {
+			double largo = Double.parseDouble(view.getTfLargo().getText());
+			double ancho = Double.parseDouble(view.getTfAncho().getText());
+			double alto = Double.parseDouble(view.getTfAlto().getText());
+			double peso = Double.parseDouble(view.getTfPeso().getText());
+			double precioFinal = 25 + peso*2 + ((largo*ancho*alto) / 10000);
+			DecimalFormat df = new DecimalFormat("#.00");
+			String resultado = df.format(precioFinal);
+			view.getTfPrecio().setText(resultado);
+		}
+	}
+
 	private void realizarPedido() {
 		if (view.comprobarCampos()) {
 			Random rd = new Random();
