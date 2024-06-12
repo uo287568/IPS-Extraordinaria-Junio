@@ -1,8 +1,10 @@
 package giis.demo.tkrun;
 
-import java.util.Random;
+import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+
 import giis.demo.util.SwingUtil;
 
 public class TransportistaController {
@@ -17,42 +19,49 @@ public class TransportistaController {
 	}
 
 	public void initController() {
-		view.getBtCancelar().addActionListener(e -> SwingUtil.exceptionWrapper(() -> salir()));
-		view.getBtRegistrar().addActionListener(e -> realizarPedido());
-		view.getBtPrecio().addActionListener(e -> calcularPrecio());
-	}
-	
-	private void calcularPrecio() {
-		if(view.comprobarDimensiones()) {
-			double largo = Double.parseDouble(view.getTfLargo().getText());
-			double ancho = Double.parseDouble(view.getTfAncho().getText());
-			double alto = Double.parseDouble(view.getTfAlto().getText());
-			double peso = Double.parseDouble(view.getTfPeso().getText());
-			double precioFinal = 25 + peso*2 + ((largo*ancho*alto) / 10000);
-			double resultado = (double) Math.round(precioFinal * 100) / 100;
-			view.getTfPrecio().setText(String.valueOf(resultado));
-		}
+		view.getBtSalir().addActionListener(e -> SwingUtil.exceptionWrapper(() -> view.reset()));
+		view.getBtBuscar().addActionListener(e -> buscarTransportista());
 	}
 
-	private void realizarPedido() {
-		if (view.comprobarCampos()) {
-			Random rd = new Random();
-			int nref = rd.nextInt(999999999);
-			model.crearPedido(nref, view.getTfNombreE().getText(), view.getTfCorreoE().getText(), view.getTfDireccionE().getText(), 
-					view.getTfNombreR().getText(), view.getTfCorreoR().getText(), view.getTfDireccionR().getText(), view.getTfLargo().getText(), 
-					view.getTfAncho().getText(), view.getTfAlto().getText(), view.getTfPeso().getText(), view.getTfPrecio().getText(), view.getTxaComentarios().getText());
-			JOptionPane.showMessageDialog(null, "REGISTRO DE PEDIDO REALIZADO CORRECTAMENTE. \nNÚMERO DE REFERENCIA DEL PEDIDO: " + nref);
-			view.reset();
+	private void buscarTransportista() {
+		String id = view.getTfID().getText();
+		if(comprobarID(id)) {
+			int numID = Integer.parseInt(id);
+			TransportistaDisplayDTO transportista = model.getTransportista(numID);
+			if(validarTransportista(transportista,numID)) {
+				getListaPedidos(numID);
+			}
+		}
+		
+	}
+
+	private void getListaPedidos(int numID) {
+		List<PedidosTransportistaDisplayDTO> pedidos = model.getPedidosTransportista(numID);
+		TableModel tmodel = SwingUtil.getTableModelFromPojos(pedidos, new String[] {"nref", "nombreEmisor", "correoEmisor","direccionEmisor","direccionReceptor","fechaEntrega"});
+		view.getTbPedidos().setModel(tmodel);
+		SwingUtil.autoAdjustColumns(view.getTbPedidos());
+	}
+
+	private boolean validarTransportista(TransportistaDisplayDTO transportista, int numID) {
+		if (transportista==null) {
+			JOptionPane.showMessageDialog(null, "No existe un transportista \ncon el ID: " + numID);
+			return false;
+		} else return true;
+	}
+
+	private boolean comprobarID(String id) {
+		try {
+			if(id.isBlank() || Integer.parseInt(id) <= 0) {
+				JOptionPane.showMessageDialog(null, "Formato de ID inválido");
+				return false;
+			} else return true;
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Formato de ID inválido");
+			return false;
 		}
 	}
 
 	public void initView() {
 		view.getFrame().setVisible(true); 
-	}
-	
-	private void salir() {
-		int eleccion=JOptionPane.showConfirmDialog(null, "¿Está segur@ de cancelar la creación del envío?");
-		if(eleccion==JOptionPane.YES_OPTION)
-			view.reset();
 	}
 }

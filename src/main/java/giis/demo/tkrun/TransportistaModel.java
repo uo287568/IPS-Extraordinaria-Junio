@@ -1,5 +1,7 @@
 package giis.demo.tkrun;
 
+import java.util.List;
+
 import giis.demo.util.Database;
 /**
  * Acceso a los datos de carreras e inscripciones, 
@@ -17,9 +19,19 @@ public class TransportistaModel {
 
 	private Database db=new Database();
 
-	public void crearPedido(int nref, String nE, String cE, String dE, String nR, String cR, String dR, String largo, String ancho, String alto, String peso, String precio, String coms) {
-		String sql="insert into Envios (nref,nombreEmisor,correoEmisor,direccionEmisor,nombreReceptor,correoReceptor,direccionReceptor,largo,ancho,alto,peso,precio,instrExtra) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		db.executeUpdate(sql,nref,nE,cE,dE,nR,cR,dR,largo,ancho,alto,peso,precio,coms);
+	public TransportistaDisplayDTO getTransportista(int id) {
+		String sql = "select * from transportistas where id=?";
+		List<TransportistaDisplayDTO> transportistas = db.executeQueryPojo(TransportistaDisplayDTO.class, sql, id);
+		if(transportistas.isEmpty()) {
+			return null;
+		}
+		return transportistas.get(0);
+	}
+
+	public List<PedidosTransportistaDisplayDTO> getPedidosTransportista(int numID) {
+		String sql = "select * from pedidosTransportista where id=? order by fechaEntrega";
+		List<PedidosTransportistaDisplayDTO> pedidos = db.executeQueryPojo(PedidosTransportistaDisplayDTO.class, sql, numID);
+		return pedidos;
 	}
 	
 	
