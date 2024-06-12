@@ -29,10 +29,10 @@ create table Transportistas (
 
 create table PedidosTransportista (
     id int not null,
-    nref int not null, 
+    nref int not null,
+    nombreEmisor varchar(20), 
+    correoEmisor varchar(50),
     direccionEmisor varchar(100),
-    nombreReceptor varchar(20), 
-    correoReceptor varchar(50),
     direccionReceptor varchar(100),
     fechaEntrega date not null,
     PRIMARY KEY (id, nref)

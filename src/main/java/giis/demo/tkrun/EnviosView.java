@@ -14,15 +14,6 @@ import java.awt.GridLayout;
 import javax.swing.JTextArea;
 import java.awt.Color;
 
-/**
- * Vista de la pantalla que muestra las carreras activas y permite interactuar con ellas.
- * <br/>Se ha generado con WindowBulder y modificado para ser conforme a MVC teniendo en cuenta:
- * - Se elimina main (es invocada desde CarrerasMain) y se incluye Title en el frame
- * - No se incluye ningun handler de eventos pues estos van en el controlador
- * - Las tablas se encierran en JOptionPane para que se puedan visualizar las cabeceras
- * - Se asinga nombre a las tablas si se van a automatizar la ejecucion de pruebas
- * - Incluye al final los metodos adicionales necesarios para acceder al UI desde el controlador
- */
 public class EnviosView {
 
 	private JFrame frmRegistroenvos;

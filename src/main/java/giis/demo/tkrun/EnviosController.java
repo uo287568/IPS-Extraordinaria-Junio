@@ -5,12 +5,6 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 import giis.demo.util.SwingUtil;
 
-/**
- * Controlador para la funcionalidad de visualizacion de carreras para la inscripcion.
- * Es el punto de entrada de esta pantalla que se invocará:
- * -instanciando el controlador con la vista y el modelo
- * -ejecutando initController que instalara los manejadores de eventos
- */
 public class EnviosController {
 	private EnviosModel model;
 	private EnviosView view;
