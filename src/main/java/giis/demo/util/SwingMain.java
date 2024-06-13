@@ -48,7 +48,7 @@ public class SwingMain {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Servicio de envíos");
-		frame.setBounds(0, 0, 287, 185);
+		frame.setBounds(0, 0, 314, 246);
 		frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));		
 			
@@ -79,6 +79,15 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(bntEnvioADomicilio);
+		
+		JButton bntLocalizacion = new JButton("Localización de envíos");
+		bntLocalizacion.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+			public void actionPerformed(ActionEvent e) {
+				LocalizacionEnvioController controller=new LocalizacionEnvioController(new LocalizacionEnvioModel(), new LocalizacionEnvioView());
+				controller.initController();
+			}
+		});
+		frame.getContentPane().add(bntLocalizacion);
 		
 		JButton btnEnviosTransportista = new JButton("Lista de envíos del transportista");
 		btnEnviosTransportista.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
