@@ -24,7 +24,7 @@ import javax.swing.JTable;
  */
 public class TransportistaView {
 
-	private JFrame frmRegistroenvos;
+	private JFrame frmTransportista;
 	private JLabel lbTítulo;
 	private JTextField tfID;
 	private JPanel pnTransportista;
@@ -45,21 +45,21 @@ public class TransportistaView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmRegistroenvos = new JFrame();
-		frmRegistroenvos.setTitle("RegistroEnvíos");
-		frmRegistroenvos.setName("RegistroEnvíos");
-		frmRegistroenvos.setBounds(0, 0, 771, 422);
-		frmRegistroenvos.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		frmRegistroenvos.getContentPane().setLayout(new MigLayout("", "[grow]", "[][][][][grow][][][][]"));
+		frmTransportista = new JFrame();
+		frmTransportista.setTitle("EnvíosTransportista");
+		frmTransportista.setName("EnvíosTransportista");
+		frmTransportista.setBounds(0, 0, 771, 422);
+		frmTransportista.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		frmTransportista.getContentPane().setLayout(new MigLayout("", "[grow]", "[][][][][grow][][][][]"));
 		
 		lbTítulo = new JLabel("Lista de pedidos de un transportista:");
 		lbTítulo.setFont(new Font("Tahoma", Font.BOLD, 15));
-		frmRegistroenvos.getContentPane().add(lbTítulo, "cell 0 0");
+		frmTransportista.getContentPane().add(lbTítulo, "cell 0 0");
 		
 		pnTransportista = new JPanel();
 		FlowLayout fl_pnTransportista = (FlowLayout) pnTransportista.getLayout();
 		fl_pnTransportista.setAlignment(FlowLayout.LEFT);
-		frmRegistroenvos.getContentPane().add(pnTransportista, "cell 0 2,grow");
+		frmTransportista.getContentPane().add(pnTransportista, "cell 0 2,grow");
 		
 		lbID = new JLabel("ID transportista:");
 		pnTransportista.add(lbID);
@@ -74,7 +74,7 @@ public class TransportistaView {
 		pnTransportista.add(btBuscar);
 		
 		pnTabla = new JScrollPane();
-		frmRegistroenvos.getContentPane().add(pnTabla, "cell 0 4,grow");
+		frmTransportista.getContentPane().add(pnTabla, "cell 0 4,grow");
 		
 		tbPedidos = new JTable();
 		tbPedidos.setDefaultEditor(Object.class, null); //readonly
@@ -83,7 +83,7 @@ public class TransportistaView {
 		JPanel pnSalir = new JPanel();
 		FlowLayout fl_pnSalir = (FlowLayout) pnSalir.getLayout();
 		fl_pnSalir.setAlignment(FlowLayout.RIGHT);
-		frmRegistroenvos.getContentPane().add(pnSalir, "cell 0 6,grow");
+		frmTransportista.getContentPane().add(pnSalir, "cell 0 6,grow");
 		
 		btnSalir = new JButton("Salir");
 		btnSalir.setForeground(Color.WHITE);
@@ -99,7 +99,7 @@ public class TransportistaView {
 	}
 
 	//Getters y Setters anyadidos para acceso desde el controlador (repersentacion compacta)
-	public JFrame getFrame() { return this.frmRegistroenvos; }
+	public JFrame getFrame() { return this.frmTransportista; }
 	public JButton getBtSalir() { return this.btnSalir;	}	
 	public JButton getBtBuscar() { return this.btBuscar;	}
 	public JTextField getTfID() { return tfID;	}

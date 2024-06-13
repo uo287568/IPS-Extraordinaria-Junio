@@ -3,6 +3,7 @@
 delete from envios;
 delete from transportistas;
 delete from pedidosTransportista;
+delete from movimientos;
 
 insert into envios(nref,nombreEmisor,correoEmisor,direccionEmisor,nombreReceptor, correoReceptor, direccionReceptor, largo, ancho, alto, peso, precio, instrExtra) values 
 	(1, "Juan", "juan@gmail.com", "Calle Uría 53, 4B", "Marisa", "marisa@gmail.com", "Calle Julián Clavería 13, 2C", 7.6, 2.3, 8.9, 4.75, 9.45, ""),
@@ -21,7 +22,7 @@ insert into transportistas(id) values
 	(3);
 
 insert into pedidosTransportista(id,nref,nombreEmisor,correoEmisor,direccionEmisor,direccionReceptor,fechaEntrega) values
-	(1, 1, "Calle Uría 53, 4B", "Juan", "juan@gmail.com", "Calle Julián Clavería 13, 2C", "2024-06-29"),
+	(1, 1, "Calle Uría 53, 4B", "Juan", "juan@gmail.com", "Calle Julián Clavería 13, 2C", "2024-06-20"),
 	(1, 4, "Felipe", "felipe@gmail.com", "Calle Ramiro I Rey 2, bajo izda", "Calle Quintana 6, 5C", "2024-07-08"),
 	(1, 9, "Covadonga", "covadonga@gmail.com", "Calle Caveda 4, 2C", "Calle Burriana 18, 6A", "2024-06-26"),
 	(2, 3, "Marta", "marta@gmail.com", "Calle Fernando Alonso 33, 3C", "Calle de Argüelles 11, 4A", "2024-07-14"),
@@ -30,3 +31,9 @@ insert into pedidosTransportista(id,nref,nombreEmisor,correoEmisor,direccionEmis
 	(3, 2, "Lucía", "lucia@gmail.com", "Calle Alejandro Casona 21, 3A", "Avenida Buenavista 4, 1B", "2024-06-30"),
 	(3, 7, "Begoña", "begoña@gmail.com", "Calle Celestino Álvarez 7, 1C", "Calle Adolfo Posada 13, 3B", "2024-07-22"),
 	(3, 8, "Manuela", "manuela@gmail.com", "Calle Cervantes 11, 4B", "Calle Otero 21, 4C", "2024-07-11");
+
+insert into movimientos(id,nref,movimiento,ubicacion,fechaMov) values
+	(1, 1, "Carga", "Calle Julián Clavería 13, 2C", "2024-06-03 10:41:37"),
+	(1, 1, "Descarga", "Almacén San Francisco de la Vera", "2024-06-03 16:34:12"),
+	(1, 1, "Carga", "Almacén San Francisco de la Vera", "2024-06-05 11:08:46"),
+	(1, 1, "Descarga", "Oficina Correos Calle Santo Ángel, Oviedo", "2024-06-05 18:24:29");

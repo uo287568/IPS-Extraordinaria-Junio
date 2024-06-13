@@ -88,6 +88,15 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnEnviosTransportista);
+		
+		JButton btnCarga = new JButton("Carga de envíos");
+		btnCarga.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+			public void actionPerformed(ActionEvent e) {
+				CargaController controller=new CargaController(new CargaModel(), new CargaView());
+				controller.initController();
+			}
+		});
+		frame.getContentPane().add(btnCarga);
 	}
 
 	public JFrame getFrame() { return this.frame; }
