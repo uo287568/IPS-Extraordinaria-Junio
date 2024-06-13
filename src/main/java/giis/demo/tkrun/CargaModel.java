@@ -19,19 +19,27 @@ public class CargaModel {
 
 	private Database db=new Database();
 
-	public TransportistaDisplayDTO getTransportista(int id) {
-		String sql = "select * from transportistas where id=?";
-		List<TransportistaDisplayDTO> transportistas = db.executeQueryPojo(TransportistaDisplayDTO.class, sql, id);
-		if(transportistas.isEmpty()) {
+	public PedidosTransportistaDisplayDTO getEnvio(int id, int nref) {
+		String sql = "select * from pedidosTransportista where id=? and nref=?";
+		List<PedidosTransportistaDisplayDTO> envios = db.executeQueryPojo(PedidosTransportistaDisplayDTO.class, sql, id, nref);
+		if(envios.isEmpty()) {
 			return null;
 		}
-		return transportistas.get(0);
+		return envios.get(0);
 	}
 
-	public List<PedidosTransportistaDisplayDTO> getPedidosTransportista(int numID) {
-		String sql = "select * from pedidosTransportista where id=? order by fechaEntrega";
-		List<PedidosTransportistaDisplayDTO> pedidos = db.executeQueryPojo(PedidosTransportistaDisplayDTO.class, sql, numID);
-		return pedidos;
+	public MovimientosDisplayDTO getLastMov(int id, int nref) {
+		String sql = "select * from movimientos where id=? and nref=? order by fechamov desc";
+		List<MovimientosDisplayDTO> movimientos = db.executeQueryPojo(MovimientosDisplayDTO.class, sql, id, nref);
+		if(movimientos.isEmpty()) {
+			return null;
+		}
+		return movimientos.get(0);
+	}
+
+	public void registrarCarga(int id, int nref, String mov, String ubi, String fechaHoraActual) {
+		String sql="insert into movimientos (id,nref,movimiento,ubicacion,fechaMov) values (?,?,?,?,?)";
+		db.executeUpdate(sql,id,nref,mov,ubi,fechaHoraActual);
 	}
 	
 	

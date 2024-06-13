@@ -43,6 +43,5 @@ create table Movimientos (
     nref int not null, 
     movimiento varchar(20),
     ubicacion varchar(100),
-    fechaMov date not null,
-    PRIMARY KEY (id, nref)
+    fechaMov date not null
 );
