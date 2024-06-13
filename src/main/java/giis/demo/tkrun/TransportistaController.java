@@ -31,8 +31,7 @@ public class TransportistaController {
 			if(validarTransportista(transportista,numID)) {
 				getListaPedidos(numID);
 			}
-		}
-		
+		}		
 	}
 
 	private void getListaPedidos(int numID) {

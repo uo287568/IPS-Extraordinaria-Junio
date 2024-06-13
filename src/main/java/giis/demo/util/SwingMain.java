@@ -48,7 +48,7 @@ public class SwingMain {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Servicio de envíos");
-		frame.setBounds(0, 0, 287, 185);
+		frame.setBounds(0, 0, 314, 246);
 		frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));		
 			

@@ -54,7 +54,7 @@ public class LocalizacionEnvioView {
 		frmTransportista = new JFrame();
 		frmTransportista.setTitle("EnvíosTransportista");
 		frmTransportista.setName("EnvíosTransportista");
-		frmTransportista.setBounds(0, 0, 771, 422);
+		frmTransportista.setBounds(0, 0, 577, 438);
 		frmTransportista.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		frmTransportista.getContentPane().setLayout(new MigLayout("", "[grow]", "[][][][][][grow][][grow][][]"));
 		
@@ -92,6 +92,7 @@ public class LocalizacionEnvioView {
 		frmTransportista.getContentPane().add(pnInfo, "cell 0 5,grow");
 		
 		tbInfo = new JTable();
+		tbInfo.setDefaultEditor(Object.class, null); //readonly
 		pnInfo.setViewportView(tbInfo);
 		
 		lbMovimientos = new JLabel("Movimientos del envío:");
@@ -117,7 +118,7 @@ public class LocalizacionEnvioView {
 		pnSalir.add(btnSalir);
 		
 		tfEstado = new JTextField();
-		tfEstado.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		tfEstado.setFont(new Font("Tahoma", Font.BOLD, 13));
 		tfEstado.setEditable(false);
 		frmTransportista.getContentPane().add(tfEstado, "cell 0 3");
 		tfEstado.setColumns(10);
