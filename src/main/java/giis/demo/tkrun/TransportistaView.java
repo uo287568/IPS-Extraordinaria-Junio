@@ -62,9 +62,11 @@ public class TransportistaView {
 		frmTransportista.getContentPane().add(pnTransportista, "cell 0 2,grow");
 		
 		lbID = new JLabel("ID transportista:");
+		lbID.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		pnTransportista.add(lbID);
 		
 		tfID = new JTextField();
+		tfID.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		pnTransportista.add(tfID);
 		tfID.setColumns(10);
 		
