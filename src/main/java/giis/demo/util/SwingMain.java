@@ -106,6 +106,15 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnCarga);
+		
+		JButton btnDescarga = new JButton("Descarga de envíos");
+		btnDescarga.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+			public void actionPerformed(ActionEvent e) {
+				DescargaController controller=new DescargaController(new DescargaModel(), new DescargaView());
+				controller.initController();
+			}
+		});
+		frame.getContentPane().add(btnDescarga);
 	}
 
 	public JFrame getFrame() { return this.frame; }
