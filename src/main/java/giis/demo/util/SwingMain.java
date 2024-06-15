@@ -81,7 +81,7 @@ public class SwingMain {
 		frame.getContentPane().add(bntEnvioADomicilio);
 		
 		JButton bntEnvioEmpresa = new JButton("Registro de envíos de empresas");
-		bntEnvioADomicilio.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+		bntEnvioEmpresa.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
 				EmpresaController controller=new EmpresaController(new EmpresaModel(), new EmpresaView());
 				controller.initController();
