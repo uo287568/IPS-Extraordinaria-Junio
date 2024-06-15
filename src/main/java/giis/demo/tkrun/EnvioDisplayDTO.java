@@ -1,23 +1,23 @@
 package giis.demo.tkrun;
 
 public class EnvioDisplayDTO {
-	private String nref;
+	private int nref;
 	private String nombreEmisor;
 	private String correoEmisor;
 	private String direccionEmisor;
 	private String nombreReceptor;
 	private String correoReceptor;
 	private String direccionReceptor;
-	private Double largo;
-	private Double ancho;
-	private Double alto;
-	private Double peso;
-	private Double precio;
+	private double largo;
+	private double ancho;
+	private double alto;
+	private double peso;
+	private double precio;
 	private String instrExtra;
 	public EnvioDisplayDTO() {}
-	public EnvioDisplayDTO(String nref, String nombreEmisor, String correoEmisor, String direccionEmisor,
-			String nombreReceptor, String correoReceptor, String direccionReceptor, Double largo, Double ancho,
-			Double alto, Double peso, Double precio, String instrExtra) {
+	public EnvioDisplayDTO(int nref, String nombreEmisor, String correoEmisor, String direccionEmisor,
+			String nombreReceptor, String correoReceptor, String direccionReceptor, double largo, double ancho,
+			double alto, double peso, double precio, String instrExtra) {
 		super();
 		this.nref = nref;
 		this.nombreEmisor = nombreEmisor;
@@ -33,7 +33,7 @@ public class EnvioDisplayDTO {
 		this.precio = precio;
 		this.instrExtra = instrExtra;
 	}
-	public String getNref() {
+	public int getNref() {
 		return nref;
 	}
 	public String getNombreEmisor() {
@@ -54,25 +54,25 @@ public class EnvioDisplayDTO {
 	public String getDireccionReceptor() {
 		return direccionReceptor;
 	}
-	public Double getLargo() {
+	public double getLargo() {
 		return largo;
 	}
-	public Double getAncho() {
+	public double getAncho() {
 		return ancho;
 	}
-	public Double getAlto() {
+	public double getAlto() {
 		return alto;
 	}
-	public Double getPeso() {
+	public double getPeso() {
 		return peso;
 	}
-	public Double getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 	public String getInstrExtra() {
 		return instrExtra;
 	}
-	public void setNref(String nref) {
+	public void setNref(int nref) {
 		this.nref = nref;
 	}
 	public void setNombreEmisor(String nombreEmisor) {
@@ -93,19 +93,19 @@ public class EnvioDisplayDTO {
 	public void setDireccionReceptor(String direccionReceptor) {
 		this.direccionReceptor = direccionReceptor;
 	}
-	public void setLargo(Double largo) {
+	public void setLargo(double largo) {
 		this.largo = largo;
 	}
-	public void setAncho(Double ancho) {
+	public void setAncho(double ancho) {
 		this.ancho = ancho;
 	}
-	public void setAlto(Double alto) {
+	public void setAlto(double alto) {
 		this.alto = alto;
 	}
-	public void setPeso(Double peso) {
+	public void setPeso(double peso) {
 		this.peso = peso;
 	}
-	public void setPrecio(Double precio) {
+	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 	public void setInstrExtra(String instrExtra) {
