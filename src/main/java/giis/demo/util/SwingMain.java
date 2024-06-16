@@ -48,7 +48,7 @@ public class SwingMain {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Servicio de envíos");
-		frame.setBounds(0, 0, 314, 246);
+		frame.setBounds(0, 0, 316, 288);
 		frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));		
 			
@@ -124,6 +124,15 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnDescarga);
+		
+		JButton btnEntrega = new JButton("Entrega en destino");
+		btnEntrega.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+			public void actionPerformed(ActionEvent e) {
+				EntregaController controller=new EntregaController(new EntregaModel(), new EntregaView());
+				controller.initController();
+			}
+		});
+		frame.getContentPane().add(btnEntrega);
 	}
 
 	public JFrame getFrame() { return this.frame; }
