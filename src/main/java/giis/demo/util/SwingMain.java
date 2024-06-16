@@ -80,6 +80,15 @@ public class SwingMain {
 		});
 		frame.getContentPane().add(bntEnvioADomicilio);
 		
+		JButton bntEnvioEmpresa = new JButton("Registro de envíos de empresas");
+		bntEnvioEmpresa.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+			public void actionPerformed(ActionEvent e) {
+				EmpresaController controller=new EmpresaController(new EmpresaModel(), new EmpresaView());
+				controller.initController();
+			}
+		});
+		frame.getContentPane().add(bntEnvioEmpresa);
+		
 		JButton bntLocalizacion = new JButton("Localización de envíos");
 		bntLocalizacion.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
