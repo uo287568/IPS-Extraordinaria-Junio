@@ -4,7 +4,7 @@ import java.util.List;
 
 import giis.demo.util.Database;
 
-public class CargaModel {
+public class EntregaModel {
 
 	private Database db=new Database();
 
@@ -26,9 +26,18 @@ public class CargaModel {
 		return movimientos.get(0);
 	}
 
-	public void registrarCarga(int id, int nref, String mov, String ubi, String fechaHoraActual) {
+	public void registrarEntrega(int id, int nref, String mov, String ubi, String fechaHoraActual) {
 		String sql="insert into movimientos (id,nref,movimiento,ubicacion,fechaMov) values (?,?,?,?,?)";
 		db.executeUpdate(sql,id,nref,mov,ubi,fechaHoraActual);
+	}
+
+	public EnvioDisplayDTO getEnvio(int nrefnum) {
+		String sql = "select * from envios where nref=?";
+		List<EnvioDisplayDTO> envios = db.executeQueryPojo(EnvioDisplayDTO.class, sql, nrefnum);
+		if(envios.isEmpty()) {
+			return null;
+		}
+		return envios.get(0);
 	}
 	
 	

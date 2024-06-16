@@ -13,15 +13,6 @@ import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-/**
- * Vista de la pantalla que muestra las carreras activas y permite interactuar con ellas.
- * <br/>Se ha generado con WindowBulder y modificado para ser conforme a MVC teniendo en cuenta:
- * - Se elimina main (es invocada desde CarrerasMain) y se incluye Title en el frame
- * - No se incluye ningun handler de eventos pues estos van en el controlador
- * - Las tablas se encierran en JOptionPane para que se puedan visualizar las cabeceras
- * - Se asinga nombre a las tablas si se van a automatizar la ejecucion de pruebas
- * - Incluye al final los metodos adicionales necesarios para acceder al UI desde el controlador
- */
 public class TransportistaView {
 
 	private JFrame frmTransportista;
@@ -34,21 +25,15 @@ public class TransportistaView {
 	private JScrollPane pnTabla;
 	private JTable tbPedidos;
 
-	/**
-	 * Create the application.
-	 */
 	public TransportistaView() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frmTransportista = new JFrame();
 		frmTransportista.setTitle("EnvíosTransportista");
 		frmTransportista.setName("EnvíosTransportista");
-		frmTransportista.setBounds(0, 0, 771, 422);
+		frmTransportista.setBounds(0, 0, 771, 321);
 		frmTransportista.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		frmTransportista.getContentPane().setLayout(new MigLayout("", "[grow]", "[][][][][grow][][][][]"));
 		

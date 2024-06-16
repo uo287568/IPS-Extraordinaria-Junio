@@ -53,6 +53,9 @@ public class CargaController {
 					JOptionPane.showMessageDialog(null, "La ubicación de la carga no coincide con la de la última descarga");
 					return false;
 				}
+			} else if(!envio.getDireccionEmisor().equals(view.getTfUbicacion().getText())) {
+				JOptionPane.showMessageDialog(null, "La ubicación de la primera carga no coincide con la de la recogida");
+				return false;
 			}
 			return true;
 		}

@@ -10,10 +10,12 @@ import javax.swing.JPanel;
 import java.awt.Font;
 import java.awt.FlowLayout;
 import java.awt.Color;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
-public class DescargaView {
+public class EntregaView {
 
-	private JFrame frmDescargaEnvios;
+	private JFrame frmEntrega;
 	private JLabel lbTítulo;
 	private JButton btnCancelar;
 	private JButton btRegistro;
@@ -24,56 +26,66 @@ public class DescargaView {
 	private JLabel lbUbicacion;
 	private JTextField tfUbicacion;
 	private JLabel lbFecha;
+	private JButton btInfo;
+	private JScrollPane spInfo;
+	private JTable tbInfo;
 
-	public DescargaView() {
+	public EntregaView() {
 		initialize();
 	}
 
 	private void initialize() {
-		frmDescargaEnvios = new JFrame();
-		frmDescargaEnvios.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 13));
-		frmDescargaEnvios.setTitle("DescargaEnvíos");
-		frmDescargaEnvios.setName("DescargaEnvíos");
-		frmDescargaEnvios.setBounds(0, 0, 374, 231);
-		frmDescargaEnvios.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		frmDescargaEnvios.getContentPane().setLayout(new MigLayout("", "[grow]", "[][10.00][][][][][16.00][]"));
+		frmEntrega = new JFrame();
+		frmEntrega.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 13));
+		frmEntrega.setTitle("Entrega");
+		frmEntrega.setName("Entrega");
+		frmEntrega.setBounds(0, 0, 419, 267);
+		frmEntrega.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		frmEntrega.getContentPane().setLayout(new MigLayout("", "[grow]", "[][10.00][][][grow][][][16.00][]"));
 		
-		lbTítulo = new JLabel("Registro de descarga de envíos:");
+		lbTítulo = new JLabel("Entrega en destino:");
 		lbTítulo.setFont(new Font("Tahoma", Font.BOLD, 15));
-		frmDescargaEnvios.getContentPane().add(lbTítulo, "cell 0 0");
+		frmEntrega.getContentPane().add(lbTítulo, "cell 0 0");
 		
 		lbID = new JLabel("ID del transportista: ");
 		lbID.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		frmDescargaEnvios.getContentPane().add(lbID, "flowx,cell 0 2");
+		frmEntrega.getContentPane().add(lbID, "flowx,cell 0 2");
 		
 		lbNRef = new JLabel("Número de referencia del envío: ");
 		lbNRef.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		frmDescargaEnvios.getContentPane().add(lbNRef, "flowx,cell 0 3");
+		frmEntrega.getContentPane().add(lbNRef, "flowx,cell 0 3");
 		
-		lbUbicacion = new JLabel("Ubicación de la descarga:");
+		spInfo = new JScrollPane();
+		frmEntrega.getContentPane().add(spInfo, "cell 0 4,grow");
+		
+		tbInfo = new JTable();
+		tbInfo.setDefaultEditor(Object.class, null); //readonly
+		spInfo.setViewportView(tbInfo);
+		
+		lbUbicacion = new JLabel("Ubicación de destino:");
 		lbUbicacion.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		frmDescargaEnvios.getContentPane().add(lbUbicacion, "flowx,cell 0 4");
+		frmEntrega.getContentPane().add(lbUbicacion, "flowx,cell 0 5");
 		
-		lbFecha = new JLabel("Se registrará la fecha y hora de la descarga (hora actual)");
+		lbFecha = new JLabel("Se registrará la fecha y hora de destino (hora actual)");
 		lbFecha.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		frmDescargaEnvios.getContentPane().add(lbFecha, "cell 0 5");
+		frmEntrega.getContentPane().add(lbFecha, "cell 0 6");
 		
 		tfID = new JTextField();
-		frmDescargaEnvios.getContentPane().add(tfID, "cell 0 2");
+		frmEntrega.getContentPane().add(tfID, "cell 0 2");
 		tfID.setColumns(10);
 		
 		tfNRef = new JTextField();
-		frmDescargaEnvios.getContentPane().add(tfNRef, "cell 0 3");
+		frmEntrega.getContentPane().add(tfNRef, "cell 0 3");
 		tfNRef.setColumns(10);
 		
 		tfUbicacion = new JTextField();
-		frmDescargaEnvios.getContentPane().add(tfUbicacion, "cell 0 4");
+		frmEntrega.getContentPane().add(tfUbicacion, "cell 0 5");
 		tfUbicacion.setColumns(10);
 		
 		JPanel pnBotones = new JPanel();
 		FlowLayout fl_pnBotones = (FlowLayout) pnBotones.getLayout();
 		fl_pnBotones.setAlignment(FlowLayout.RIGHT);
-		frmDescargaEnvios.getContentPane().add(pnBotones, "cell 0 7,grow");
+		frmEntrega.getContentPane().add(pnBotones, "cell 0 8,grow");
 		
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setForeground(Color.WHITE);
@@ -81,10 +93,13 @@ public class DescargaView {
 		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 12));
 		pnBotones.add(btnCancelar);
 		
-		btRegistro = new JButton("Registrar descarga");
+		btRegistro = new JButton("Registrar entrega");
 		btRegistro.setBackground(Color.GREEN);
 		btRegistro.setFont(new Font("Tahoma", Font.BOLD, 12));
 		pnBotones.add(btRegistro);
+		
+		btInfo = new JButton("Ver Info");
+		frmEntrega.getContentPane().add(btInfo, "cell 0 3");
 	}
 	
 	public void reset() {
@@ -95,10 +110,12 @@ public class DescargaView {
 	}
 
 	//Getters y Setters anyadidos para acceso desde el controlador (repersentacion compacta)
-	public JFrame getFrame() { return this.frmDescargaEnvios; }
+	public JFrame getFrame() { return this.frmEntrega; }
 	public JButton getBtCancelar() { return this.btnCancelar;	}
 	public JButton getBtRegistrar() { return this.btRegistro;	}
+	public JButton getBtInfo() { return this.btInfo;	}
 	public JTextField getTfID() { return tfID;	}
 	public JTextField getTfNRef() { return tfNRef;	}
 	public JTextField getTfUbicacion() { return tfUbicacion;	}
+	public JTable getTbInfo() { return tbInfo;	}
 }

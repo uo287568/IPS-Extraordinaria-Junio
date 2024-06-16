@@ -22,7 +22,7 @@ insert into transportistas(id) values
 	(3);
 
 insert into pedidosTransportista(id,nref,nombreEmisor,correoEmisor,direccionEmisor,direccionReceptor,fechaEntrega) values
-	(1, 1, "Calle Uría 53, 4B", "Juan", "juan@gmail.com", "Calle Julián Clavería 13, 2C", "2024-06-20"),
+	(1, 1, "Calle Uría 53, 4B", "Juan", "juan@gmail.com", "Calle Julián Clavería 13, 2C", "2024-06-22"),
 	(1, 4, "Felipe", "felipe@gmail.com", "Calle Ramiro I Rey 2, bajo izda", "Calle Quintana 6, 5C", "2024-07-08"),
 	(1, 9, "Covadonga", "covadonga@gmail.com", "Calle Caveda 4, 2C", "Calle Burriana 18, 6A", "2024-06-26"),
 	(2, 3, "Marta", "marta@gmail.com", "Calle Fernando Alonso 33, 3C", "Calle de Argüelles 11, 4A", "2024-07-14"),
@@ -36,4 +36,9 @@ insert into movimientos(id,nref,movimiento,ubicacion,fechaMov) values
 	(1, 1, "Carga", "Calle Julián Clavería 13, 2C", "2024-06-03 10:41:37"),
 	(1, 1, "Descarga", "Almacén San Francisco de la Vera", "2024-06-03 16:34:12"),
 	(1, 1, "Carga", "Almacén San Francisco de la Vera", "2024-06-05 11:08:46"),
-	(1, 1, "Descarga", "Oficina Correos Calle Santo Ángel, Oviedo", "2024-06-05 18:24:29");
+	(1, 1, "Descarga", "Oficina Correos Calle Santo Ángel, Oviedo", "2024-06-05 18:24:29"),
+	(2, 5, "Carga", "Calle Sta Susana 9, 1B", "2024-06-08 16:56:31"),
+	(2, 5, "Descarga", "Almacén San Francisco de la Vera", "2024-06-08 19:34:15"),
+	(3, 7, "Carga", "Calle Celestino Álvarez 7, 1C", "2024-06-11 12:09:34"),
+	(3, 7, "Descarga", "Oficina Correos Calle Santo Ángel, Oviedo", "2024-06-11 15:19:52"),
+	(3, 7, "Carga", "Almacén San Francisco de la Vera", "2024-06-16 10:28:49");
