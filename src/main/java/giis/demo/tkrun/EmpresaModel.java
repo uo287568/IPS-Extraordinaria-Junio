@@ -19,13 +19,16 @@ public class EmpresaModel {
 		List<EnvioEntity> envios = cargarEnvios("src/main/java/files/" + nEmpresa + ".csv", nEmpresa);
 		if (envios.size() > 0) {
 			Random rd = new Random();
+			List<Integer> nrefs = new ArrayList<>();
 			for (EnvioEntity envio: envios) {
-				envio.setNref(rd.nextInt(999999999));
+				int rand = rd.nextInt(999999999);
+				envio.setNref(rand);
+				nrefs.add(rand);
 				db.executeUpdate(sql,envio.getNref(),envio.getNombreEmisor(),envio.getCorreoEmisor(),envio.getDireccionEmisor(),
 						envio.getNombreReceptor(),envio.getCorreoReceptor(),envio.getDireccionReceptor(),envio.getLargo(),envio.getAncho(),
 						envio.getAlto(),envio.getPeso(),envio.getPrecio(),envio.getInstrExtra());
 			}
-			JOptionPane.showMessageDialog(null, "SE HAN REGISTRADO CORRECTAMENTE " + envios.size() + " ENVÍOS");			
+			JOptionPane.showMessageDialog(null, "SE HAN REGISTRADO CORRECTAMENTE " + envios.size() + " ENVÍOS\nNúmeros de referencia: " + nrefs.toString());			
 		}
 	}
 
