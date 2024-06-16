@@ -30,16 +30,10 @@ public class EntregaView {
 	private JScrollPane spInfo;
 	private JTable tbInfo;
 
-	/**
-	 * Create the application.
-	 */
 	public EntregaView() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frmEntrega = new JFrame();
 		frmEntrega.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 13));

@@ -53,6 +53,9 @@ public class DescargaController {
 					JOptionPane.showMessageDialog(null, "La ubicación de la descarga coincide con la de la última carga");
 					return false;
 				}
+			} else {
+				JOptionPane.showMessageDialog(null, "El envío aún no ha sido recogido");
+				return false;
 			}
 			return true;
 		}

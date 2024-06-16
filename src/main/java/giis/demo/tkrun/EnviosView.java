@@ -46,16 +46,10 @@ public class EnviosView {
 	private JButton btRegistro;
 	private JButton btPrecio;
 
-	/**
-	 * Create the application.
-	 */
 	public EnviosView() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frmRegistroenvos = new JFrame();
 		frmRegistroenvos.setTitle("RegistroEnvíos");

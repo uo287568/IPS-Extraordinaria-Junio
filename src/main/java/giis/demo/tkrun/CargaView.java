@@ -28,16 +28,10 @@ public class CargaView {
 	private JTextField tfUbicacion;
 	private JLabel lbFecha;
 
-	/**
-	 * Create the application.
-	 */
 	public CargaView() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frmCargaEnvios = new JFrame();
 		frmCargaEnvios.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 13));

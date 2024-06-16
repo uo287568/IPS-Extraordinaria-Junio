@@ -22,16 +22,10 @@ public class EmpresaView {
 	private JButton btnCancelar;
 	private JButton btRegistro;
 
-	/**
-	 * Create the application.
-	 */
 	public EmpresaView() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frmRegistroEmpresa = new JFrame();
 		frmRegistroEmpresa.setTitle("RegistroEmpresa");

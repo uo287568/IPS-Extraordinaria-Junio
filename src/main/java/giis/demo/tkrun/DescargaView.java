@@ -25,16 +25,10 @@ public class DescargaView {
 	private JTextField tfUbicacion;
 	private JLabel lbFecha;
 
-	/**
-	 * Create the application.
-	 */
 	public DescargaView() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frmDescargaEnvios = new JFrame();
 		frmDescargaEnvios.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 13));

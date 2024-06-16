@@ -91,6 +91,9 @@ public class EntregaController {
 					JOptionPane.showMessageDialog(null, "La ubicación de la entrega no coincide con la de la entrega asignada");
 					return false;
 				}
+			} else {
+				JOptionPane.showMessageDialog(null, "El envío aún no ha sido recogido");
+				return false;
 			}
 			return true;
 		}
