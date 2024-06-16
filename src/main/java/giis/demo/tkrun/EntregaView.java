@@ -65,6 +65,7 @@ public class EntregaView {
 		frmEntrega.getContentPane().add(spInfo, "cell 0 4,grow");
 		
 		tbInfo = new JTable();
+		tbInfo.setDefaultEditor(Object.class, null); //readonly
 		spInfo.setViewportView(tbInfo);
 		
 		lbUbicacion = new JLabel("Ubicación de destino:");

@@ -37,7 +37,7 @@ public class EntregaModel {
 		return movimientos.get(0);
 	}
 
-	public void registrarCarga(int id, int nref, String mov, String ubi, String fechaHoraActual) {
+	public void registrarEntrega(int id, int nref, String mov, String ubi, String fechaHoraActual) {
 		String sql="insert into movimientos (id,nref,movimiento,ubicacion,fechaMov) values (?,?,?,?,?)";
 		db.executeUpdate(sql,id,nref,mov,ubi,fechaHoraActual);
 	}

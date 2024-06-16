@@ -23,7 +23,7 @@ public class EntregaController {
 
 	public void initController() {
 		view.getBtCancelar().addActionListener(e -> SwingUtil.exceptionWrapper(() -> salir()));
-		view.getBtRegistrar().addActionListener(e -> realizarCarga());
+		view.getBtRegistrar().addActionListener(e -> realizarEntrega());
 		view.getBtInfo().addActionListener(e -> verInfo());
 	}
 	
@@ -61,7 +61,7 @@ public class EntregaController {
 		}
 	}
 
-	private void realizarCarga() {
+	private void realizarEntrega() {
 		if (comprobarCampos()) {
 			int id = Integer.parseInt(view.getTfID().getText());
 			int nref = Integer.parseInt(view.getTfNRef().getText());
@@ -69,8 +69,8 @@ public class EntregaController {
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		        LocalDateTime now = LocalDateTime.now();
 		        String fechaHoraActual = dtf.format(now);
-				model.registrarCarga(id, nref, "Carga", view.getTfUbicacion().getText(), fechaHoraActual);
-				JOptionPane.showMessageDialog(null, "REGISTRO DE CARGA REALIZADO CORRECTAMENTE");
+				model.registrarEntrega(id, nref, "Entrega", view.getTfUbicacion().getText(), fechaHoraActual);
+				JOptionPane.showMessageDialog(null, "REGISTRO DE ENTREGA REALIZADO CORRECTAMENTE");
 				view.reset();
 			}
 		}
@@ -84,11 +84,11 @@ public class EntregaController {
 		} else {
 			MovimientosDisplayDTO movimiento = model.getLastMov(id, nref);
 			if (movimiento != null) {
-				if (movimiento.getMovimiento().equals("Carga")) {
-					JOptionPane.showMessageDialog(null, "No puede haber un movimiento de carga seguido de otro de carga. \nEl último movimiento debe ser de descarga");
+				if (movimiento.getMovimiento().equals("Descarga")) {
+					JOptionPane.showMessageDialog(null, "No puede haber un movimiento de entrega seguido de uno de descarga. \nEl último movimiento debe ser de carga");
 					return false;
-				} else if (!movimiento.getUbicacion().equals(view.getTfUbicacion().getText())) {
-					JOptionPane.showMessageDialog(null, "La ubicación de la carga no coincide con la de la última descarga");
+				} else if (!envio.getDireccionReceptor().equals(view.getTfUbicacion().getText())) {
+					JOptionPane.showMessageDialog(null, "La ubicación de la entrega no coincide con la de la entrega asignada");
 					return false;
 				}
 			}
@@ -112,7 +112,7 @@ public class EntregaController {
 	}
 
 	private void salir() {
-		int eleccion=JOptionPane.showConfirmDialog(null, "¿Está segur@ de cancelar la carga del envío?");
+		int eleccion=JOptionPane.showConfirmDialog(null, "¿Está segur@ de cancelar la entrega del envío?");
 		if(eleccion==JOptionPane.YES_OPTION)
 			view.reset();
 	}

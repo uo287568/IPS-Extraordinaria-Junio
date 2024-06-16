@@ -29,7 +29,7 @@ public class LocalizacionEnvioModel {
 	}
 
 	public List<MovimientosDisplayDTO> getMovimientos(int nrefNum) {
-		String sql = "select * from movimientos where nref=?";
+		String sql = "select * from movimientos where nref=? order by fechaMov desc";
 		List<MovimientosDisplayDTO> movimientos = db.executeQueryPojo(MovimientosDisplayDTO.class, sql, nrefNum);
 		return movimientos;
 	}
