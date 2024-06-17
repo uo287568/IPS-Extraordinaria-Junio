@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import giis.demo.util.SwingUtil;
@@ -27,6 +28,7 @@ public class LocalizacionEnvioController {
 	private void buscarEnvio() {
 		String nref = view.getTfNRef().getText();
 		if(comprobarNRef(nref)) {
+			limpiar();
 			int nrefNum = Integer.parseInt(nref);
 			EnvioDisplayDTO envio = model.getEnvio(nrefNum);
 			if(comprobarEnvio(envio, nrefNum)) {
@@ -36,15 +38,24 @@ public class LocalizacionEnvioController {
 		}
 	}
 
+	private void limpiar() {
+		DefaultTableModel model1 = (DefaultTableModel) view.getTbInfo().getModel();
+        model1.setRowCount(0);
+		DefaultTableModel model2 = (DefaultTableModel) view.getTbMovimientos().getModel();
+        model2.setRowCount(0);
+	}
+
 	private void mostrarMovimientos(int nrefNum) {
 		List<MovimientosDisplayDTO> movimientos = model.getMovimientos(nrefNum);
-		TableModel tmodel = SwingUtil.getTableModelFromPojos(movimientos, new String[] {"movimiento", "ubicacion","fechaMov"});
-		view.getTbMovimientos().setModel(tmodel);
-		SwingUtil.autoAdjustColumns(view.getTbMovimientos());
-		if (movimientos.get(0).getMovimiento().equals("Entrega")) {
-			view.getTfEstado().setText("ENTREGADO");
-		} else {
-			view.getTfEstado().setText("EN CAMINO");
+		if(movimientos.size() > 0) {
+			TableModel tmodel = SwingUtil.getTableModelFromPojos(movimientos, new String[] {"movimiento", "ubicacion","fechaMov"});
+			view.getTbMovimientos().setModel(tmodel);
+			SwingUtil.autoAdjustColumns(view.getTbMovimientos());
+			if (movimientos.get(0).getMovimiento().equals("Entrega")) {
+				view.getTfEstado().setText("ENTREGADO");
+			} else {
+				view.getTfEstado().setText("EN CAMINO");
+			}
 		}
 	}
 
